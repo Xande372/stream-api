@@ -10,13 +10,23 @@ public class ConsumerExemplo {
         List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5);
 
         //Utilizando o Consumer com expressão lambda:
-        Consumer<Integer> imprimirNumeroPar = numero -> {
-            if(numero % 2 == 0) {
-                System.out.println(numero);
-            }
-        };
+        // Consumer<Integer> imprimirNumeroPar = numero -> {
+        //     if(numero % 2 == 0) {
+        //         System.out.println(numero);
+        //     }
+        // };
 
         // e utilizando o Consumer para imprimir números pares no Stream:
-        numeros.stream().forEach(imprimirNumeroPar);
+        numeros.stream().forEach(new Consumer<Integer>() {
+
+            //corpo onde a implementação é colocada:
+            @Override
+            public void accept(Integer n) {
+                if (n % 2 == 0) {
+                    System.out.println(n);
+                }
+            }
+        });
+        
     }
 }
