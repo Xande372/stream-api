@@ -7,7 +7,7 @@ import java.util.function.Consumer;
 public class ConsumerExemplo {
     public static void main(String[] args) throws Exception {
 
-        List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
         //Utilizando o Consumer com expressão lambda:
         // Consumer<Integer> imprimirNumeroPar = numero -> {
@@ -16,15 +16,11 @@ public class ConsumerExemplo {
         //     }
         // };
 
-        // e utilizando o Consumer para imprimir números pares no Stream:
-        numeros.stream().forEach(new Consumer<Integer>() {
-
-            //corpo onde a implementação é colocada:
-            @Override
-            public void accept(Integer n) {
-                if (n % 2 == 0) {
-                    System.out.println(n);
-                }
+        // e utilizando o Consumer para imprimir números pares no Stream com expressão lambda:
+        // não precisando nem usar o stream para otimizar mais.
+        numeros.stream().forEach(n -> {
+            if (n % 2 == 0) {
+                System.out.println(n);
             }
         });
         
