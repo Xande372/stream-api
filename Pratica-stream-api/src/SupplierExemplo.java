@@ -10,9 +10,16 @@ public class SupplierExemplo {
         Supplier<String> saudacao = () -> "Olá, sejam bem-vindos(a)!";
 
         //Usa o supplier para obter uma lista com 5 saudações.
-        List<String> listaSaudacoes = Stream.generate(saudacao)
-            .limit(5)
-            .collect(Collectors.toList());
+        List<String> listaSaudacoes = Stream.generate(
+            new Supplier<String>() {
+                @Override
+                public String get() {
+                    return "Olá, sejam bem-vindos(a)!";
+                }
+            }
+        )
+        .limit(5)
+        .collect(Collectors.toList());
 
         //Imprimir as saudações geradas.
         //forEach se utiliza de um consumer.
