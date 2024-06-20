@@ -10,13 +10,22 @@ public class FunctionExemplo {
         List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5);
 
         //Usar a Function com expressão lambda para dobrar todos os números.
-        Function<Integer, Integer> dobrarNumeros = numero -> numero * 2;
+        // Function<Integer, Integer> dobrarNumeros = numero -> numero * 2;
 
         //Usar a função dobrar todos os números no Stream e
         //armazená-los em outra lista.
-        List<Integer> numerosDobrados = numeros.stream().map(dobrarNumeros).collect(Collectors.toList());
+        List<Integer> numerosDobrados = numeros.stream()
+        .map( 
+            new Function<Integer, Integer>() {
+                @Override
+                public Integer apply(Integer n) {
+                    return n * 2;
+                }
+            }
+        )
+        .collect(Collectors.toList());
     
-        //Imprimir a lista de números dobrados.
-        numerosDobrados.forEach(n -> System.out.println(n));
+        //Imprimir a lista de números dobrados utilizando method reference.
+        numerosDobrados.forEach(System.out::println);
     }
 }
