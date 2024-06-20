@@ -1,6 +1,5 @@
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class FunctionExemplo {
@@ -14,16 +13,7 @@ public class FunctionExemplo {
 
         //Usar a função dobrar todos os números no Stream e
         //armazená-los em outra lista.
-        List<Integer> numerosDobrados = numeros.stream()
-        .map( 
-            new Function<Integer, Integer>() {
-                @Override
-                public Integer apply(Integer n) {
-                    return n * 2;
-                }
-            }
-        )
-        .collect(Collectors.toList());
+        List<Integer> numerosDobrados = numeros.stream().map(n -> n * 2).collect(Collectors.toList());
     
         //Imprimir a lista de números dobrados utilizando method reference.
         numerosDobrados.forEach(System.out::println);
