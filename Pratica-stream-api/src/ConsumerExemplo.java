@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
 // import java.util.function.Consumer;
+// import java.util.function.Predicate;
 
 //Utilizando o consumer<T>, ele aceita um argumento do tipo T e não retorna nenhum resultado.
 //É utilizado para realizar ações, ou efeitos colaterais nos elementos do Stream sem modificar ou retornar um valor.
@@ -18,11 +19,8 @@ public class ConsumerExemplo {
 
         // e utilizando o Consumer para imprimir números pares no Stream com expressão lambda:
         // não precisando nem usar o stream para otimizar mais.
-        numeros.stream().forEach(n -> {
-            if (n % 2 == 0) {
-                System.out.println(n);
-            }
-        });
+        // filtrar antes de imprimir
+        numeros.stream().filter(n -> n % 2 == 0).forEach(System.out::println);
         
     }
 }
